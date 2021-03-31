@@ -9,7 +9,7 @@ def load_user(user_id):
 
 
 class User(db.Model, UserMixin):
-    id = db.Column(db.Integer(), primary_key=True)
+    id = db.Column(db.String(length=8), primary_key=True)
     username = db.Column(db.String(length=30), nullable=False, unique=True)
     phone = db.Column(db.String(),  nullable=False, unique=True)
     email_address = db.Column(db.String(length=50), nullable=False, unique=True)
@@ -44,7 +44,7 @@ class Tuition(db.Model):
     name = db.Column(db.String(length=30), nullable=False, unique=True)
     price = db.Column(db.Integer(), nullable=False)
     description = db.Column(db.String(length=1024), nullable=False, unique=True)
-    owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    owner = db.Column(db.String(length=8), db.ForeignKey('user.id'))
 
     def __repr__(self):
         return f'Item {self.name}'

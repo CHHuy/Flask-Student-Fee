@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}
+Market Page
+{% endblock %}
+{% block content %}
+
+<div class="row" style="margin-top:20px; margin-left:20px">
+   <div class="col-8">
+       <h2>Tuition Available</h2>
+       <p>Check tuition status and pay</p>
+       <br>
+        <form method="GET" class="form-query" style="color:white">
+            {{ form.hidden_tag() }}
+
+            {{ form.id.label() }}
+            {{ form.id(class="form-control", placeholder="Student ID") }}
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+
+        </form>
+      <table class="table table-hover table-dark">
+         <thead>
+            <tr>
+               <!-- Your Columns HERE -->
+               <th scope="col">ID</th>
+               <th scope="col">Name</th>
+               <th scope="col">price</th>
+               <th scope="col">description</th>
+               <th scope="col">Options</th>
+            </tr>
+         </thead>
+         <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for tuition in tuititons %}
+            {% include 'includes/items_modals.html' %}
+            <tr>
+               <td>{{ tuition.id }}</td>
+               <td>{{ tuition.name }}</td>
+               <td>{{ tuition.price }}</td>
+               <td>{{ tuition.description }}$</td>
+               <td>
+                  <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ tuition.id }}">More Info</button>
+                  <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ tuition.id }}">Purchase this Item</button>
+               </td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </div>
+   <div class="col-4">
+        <h2>Payed tuition</h2>
+        <p>Payed tuition goes here</p>
+        <br>
+        <div class="row">
+           {% for fee in fees %}
+           {% include 'includes/owned_items_modals.html' %}
+             <div class="col-md-6">
+                 <div style="margin-bottom: 5px" class="card text-center bg-dark">
+                      <div class="card-body">
+                          <h5 class="card-title">{{ fee.name }}</h5>
+                          <p class="card-text"><strong>
+                              {{ fee.price }}$
+                          </strong></p>
+                          <p class="card-text"><strong>
+                              {{ fee.price }}$
+                          </strong></p>
+                      </div>
+                  </div>
+             </div>
+           {% endfor %}
+        </div>
+   </div>
+</div>
+{% endblock %}

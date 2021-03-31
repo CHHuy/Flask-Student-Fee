@@ -5,7 +5,7 @@
 </style>
 
 <!-- More Info -->
-<div class="modal fade" id="Modal-MoreInfo-{{ item.id }}"
+<div class="modal fade" id="Modal-MoreInfo-{{ tuition.id }}"
      tabindex="-1"
      aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -13,7 +13,7 @@
       <div class="modal-header">
         <h5 class="modal-title" id="ModalLabel">
           <!-- -->
-          {{ item.name }}
+          {{ tuition.name }}
         </h5>
         <button type="button" class="close"
                 data-dismiss="modal" aria-label="Close">
@@ -21,7 +21,7 @@
         </button>
       </div>
       <div class="modal-body">
-        {{ item.description }}
+        {{ tuition.description }}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary"
@@ -33,7 +33,7 @@
 </div>
 
 <!-- Purchase Confirm -->
-<div class="modal fade" id="Modal-PurchaseConfirm-{{ item.id }}"
+<div class="modal fade" id="Modal-PurchaseConfirm-{{ tuition.id }}"
      tabindex="-1"
      aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -41,7 +41,7 @@
       <div class="modal-header">
         <h5 class="modal-title" id="ModalLabel">
           <!-- -->
-          {{ item.name }}
+          {{ tuition.name }}
         </h5>
         <button type="button" class="close"
                 data-dismiss="modal" aria-label="Close">
@@ -50,17 +50,17 @@
       </div>
       <div class="modal-body">
         <form method="POST">
-          {{ purchase_form.hidden_tag() }}
+          {{ pay_form.hidden_tag() }}
           <h4 class="text-center">
-            Are you sure you want to buy {{ item.name }} for {{ item.price }}$ ?
+            Are you sure you want to buy {{ tuition.name }} for {{ tuition.price }}$ ?
           </h4>
           <br>
           <h6 class="text-center">
             By clicking Purchase, you will purchase this item.
           </h6>
           <br>
-          <input id="purchased_item" name="purchased_item" type="hidden" value="{{item.name}}">
-          {{ purchase_form.submit(class="btn btn-outline-success btn-block") }}
+          <input id="paid_fee" name="paid_fee" type="hidden" value="{{tuition.name}}">
+          {{ pay_form.submit(class="btn btn-outline-success btn-block") }}
         </form>
       </div>
       <div class="modal-footer">

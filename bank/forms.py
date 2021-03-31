@@ -5,6 +5,10 @@ from bank.models import User
 
 
 class RegisterForm(FlaskForm):
+    def validate_id(self, id_to_check):
+        id = User.query.filter_by(id=id_to_check.data).first()
+        if id:
+            raise ValidationError('Student ID already exists! Please try a different number')
 
     def validate_phone(self, phone_to_check):
         phone = User.query.filter_by(phone=phone_to_check.data).first()
@@ -23,9 +27,11 @@ class RegisterForm(FlaskForm):
 
     username = StringField(label='User Name:', validators=[
         DataRequired(), Length(1, 64)])
-    # Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,
-    #        'Usernames must have only letters, numbers, dots or '
-    #        'underscores')
+    # , Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,
+    #          'Usernames must have only letters, numbers, dots or '
+    #          'underscores')
+
+    id = StringField(label='Student ID', validators=[Length(8), DataRequired()])
     phone = StringField(label='Phone number:', validators=[Length(min=10, max=11), DataRequired()])
     email_address = StringField(label='Email Address:', validators=[Email(), DataRequired()])
     password1 = PasswordField(label='Password:', validators=[Length(min=6), DataRequired()])
@@ -34,8 +40,13 @@ class RegisterForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    username = StringField(label='User Name:', validators=[DataRequired()])
+    id = StringField(label='Student ID:', validators=[Length(8), DataRequired()])
     password = PasswordField(label='Password:', validators=[DataRequired()])
+    submit = SubmitField(label='Sign in')
+
+
+class QueryTuitionForm(FlaskForm):
+    id = StringField(label='Student ID:', validators=[Length(8), DataRequired()])
     submit = SubmitField(label='Sign in')
 
 # class PurchaseItemForm(FlaskForm):

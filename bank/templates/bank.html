@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}
+    Market Page
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row" style="margin-top:20px; margin-left:20px">
+            <div class="col-12">
+                <h2>Available items on the Market</h2>
+                <p>Click on one of the items to start buying</p>
+                <br>
+                <table class="table table-hover table-dark">
+                    <thead>
+                    <tr>
+                        <!-- Your Columns HERE -->
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Options</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Your rows inside the table HERE: -->
+                    {% for tuition in tuitions %}
+                        {% include 'includes/items_modals.html' %}
+                        <tr>
+                            <td>{{ tuition.id }}</td>
+                            <td>{{ tuition.name }}</td>
+                            <td>{{ tuition.price }}</td>
+                            <td>{{ tuition.description }}</td>
+                            <td>
+                                <button class="btn btn-outline btn-info" data-toggle="modal"
+                                        data-target="#Modal-MoreInfo-{{ tuition.id }}">More Info
+                                </button>
+                                <button class="btn btn-outline btn-success" data-toggle="modal"
+                                        data-target="#Modal-PurchaseConfirm-{{ tuition.id }}">Purchase this Item
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-12">
+                <h2>Owned Items</h2>
+                <p>Click on sell item to put an item back on the Market</p>
+                <br>
+                <table class="table table-hover table-dark">
+                    <thead>
+                    <tr>
+                        <!-- Your Columns HERE -->
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Owner</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Your rows inside the table HERE: -->
+                    {% for fee in fees %}
+                        <tr>
+                            <td>{{ fee.name }}</td>
+                            <td>{{ fee.description }}</td>
+                            <td>{{ fee.price }}</td>
+                            <td>{{ fee.owner }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
