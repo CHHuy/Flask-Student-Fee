@@ -65,7 +65,7 @@ def bank_page():
         return redirect(url_for('bank_page'))
 
     if request.method == "GET":
-        tuitions = Tuition.query.filter_by(owner=None)
+        tuitions = Tuition.query.filter_by(id=Tuition.id)
         fees = Tuition.query.filter_by(owner=current_user.id)
         return render_template('bank.html', tuitions=tuitions, pay_form=pay_form, fees=fees)
 

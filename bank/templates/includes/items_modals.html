@@ -1,8 +1,3 @@
-<style>
-  .modal-content {
-    background-color: #212121
-  }
-</style>
 
 <!-- More Info -->
 <div class="modal fade" id="Modal-MoreInfo-{{ tuition.id }}"
@@ -52,11 +47,11 @@
         <form method="POST">
           {{ pay_form.hidden_tag() }}
           <h4 class="text-center">
-            Are you sure you want to buy {{ tuition.name }} for {{ tuition.price }}$ ?
+            Process paying {{ tuition.name }} <br> for {{ tuition.price }} VNĐ ?
           </h4>
           <br>
           <h6 class="text-center">
-            By clicking Purchase, you will purchase this item.
+            By clicking confirm button, you will pay this tuition fee.
           </h6>
           <br>
           <input id="paid_fee" name="paid_fee" type="hidden" value="{{tuition.name}}">

@@ -14,15 +14,9 @@ class User(db.Model, UserMixin):
     phone = db.Column(db.String(),  nullable=False, unique=True)
     email_address = db.Column(db.String(length=50), nullable=False, unique=True)
     password_hash = db.Column(db.String(length=60), nullable=False)
-    budget = db.Column(db.Integer(), nullable=False, default=1000)
+    budget = db.Column(db.Integer(), nullable=False, default=1000000)
     fee = db.relationship('Tuition', backref='owned_user', lazy=True)
 
-    @property
-    def prettier_budget(self):
-        if len(str(self.budget)) >= 4:
-            return f'{str(self.budget)[:-3]},{str(self.budget)[-3:]}$'
-        else:
-            return f"{self.budget}$"
 
     @property
     def password(self):

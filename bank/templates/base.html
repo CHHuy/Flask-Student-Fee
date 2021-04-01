@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -17,7 +17,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Flask Market</a>
+    <a class="navbar-brand" href="#">Tuition Banking</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -34,8 +34,8 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" style="color: lawngreen; font-weight: bold">
-                        <i class="fas fa-coins"></i>
-                        {{ current_user.prettier_budget }}
+                       <i class="fas fa-wallet"></i>
+                        {{ current_user.budget }}
                     </a>
                 </li>
                 <li class="nav-item">

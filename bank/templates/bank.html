@@ -6,8 +6,8 @@
     <div class="container">
         <div class="row" style="margin-top:20px; margin-left:20px">
             <div class="col-12">
-                <h2>Available items on the Market</h2>
-                <p>Click on one of the items to start buying</p>
+                <h2>List of tuition fee</h2>
+                <p>Click on one of the tuition to start paying</p>
                 <br>
                 <table class="table table-hover table-dark">
                     <thead>
@@ -15,7 +15,7 @@
                         <!-- Your Columns HERE -->
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Price</th>
+                        <th scope="col">Fee</th>
                         <th scope="col">Description</th>
                         <th scope="col">Options</th>
                     </tr>
@@ -30,9 +30,6 @@
                             <td>{{ tuition.price }}</td>
                             <td>{{ tuition.description }}</td>
                             <td>
-                                <button class="btn btn-outline btn-info" data-toggle="modal"
-                                        data-target="#Modal-MoreInfo-{{ tuition.id }}">More Info
-                                </button>
                                 <button class="btn btn-outline btn-success" data-toggle="modal"
                                         data-target="#Modal-PurchaseConfirm-{{ tuition.id }}">Purchase this Item
                                 </button>
@@ -52,8 +49,8 @@
                         <!-- Your Columns HERE -->
                         <th scope="col">Name</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Owner</th>
+                        <th scope="col">Fee</th>
+                        <th scope="col">Paid by</th>
                     </tr>
                     </thead>
                     <tbody>

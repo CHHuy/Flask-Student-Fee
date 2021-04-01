@@ -57,4 +57,4 @@ class QueryTuitionForm(FlaskForm):
 
 
 class PayForm(FlaskForm):
-    submit = SubmitField(label='Purchase Item!')
+    submit = SubmitField(label='Confirm')
